@@ -18,6 +18,10 @@ var RockShot = (function () {
 
       Pebble.addEventListener('ready', onReady.bind(this));
       Pebble.addEventListener('appmessage', onAppMessage.bind(this));
+    },
+
+    captureSingle: function () {
+      this.requestScreenshot();
     }
 
   };
