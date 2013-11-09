@@ -17,7 +17,9 @@ You'll also need to integrate the RockShot Pebble library into your app/watchfac
 
 ## Usage
 
-Simply call ```RockShot.init``` and pass in your app's UUID. Don't put it in the Pebble ready event, RockShot will handle that itself.
+Simply call ```RockShot.init``` and pass in your app's UUID. 
+
+*Don't put it in the Pebble ready event, RockShot will handle that itself.*
 
     RockShot.init("2a3352d5-2d44-437f-9652-98464640aea1");
     
