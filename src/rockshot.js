@@ -1,5 +1,8 @@
 var RockShot = (function () {
 
+  var VERSION_MAJOR = 0;
+  var VERSION_MINOR = 5;
+
   return {
 
     init: function (appId) {
@@ -22,6 +25,14 @@ var RockShot = (function () {
 
     captureSingle: function () {
       this.requestScreenshot();
+    },
+
+    validPayload: function (payload) {
+      return isValidPayload(payload);
+    },
+
+    getVersion: function () {
+      return VERSION_MAJOR + '.' + VERSION_MINOR;
     }
 
   };
@@ -31,16 +42,16 @@ var RockShot = (function () {
     if (! ready) {
       return;
     }
+    console.log('RockShot v' + VERSION_MAJOR + '.' + VERSION_MINOR + ' is ready.');
     this.connectToFirebase();
   }
 
   function onAppMessage(e) {
-    var payload = e.payload;
-    var validPayload = payload.rockshot_header && payload.rockshot_data;
+    var validPayload = isValidPayload(e.payload);
     if (! validPayload) {
       return;
     }
-    var header = payload.rockshot_header.split('|');
+    var header = getPayloadHeader(e.payload);
     var offset = parseInt(header[0], 10);
     var chunk_size = parseInt(header[1], 10);
     var total_size = parseInt(header[2], 10);
@@ -50,7 +61,7 @@ var RockShot = (function () {
       this.shotInfo.width = parseInt(header[3], 10);
       this.shotInfo.height = parseInt(header[4], 10);
     }
-    this.updateScreenshot(offset, payload.rockshot_data);
+    this.updateScreenshot(offset, getPayloadData(e.payload));
     if (offset + chunk_size >= total_size) {
       this.uploadScreenshot();
     }
@@ -96,6 +107,24 @@ var RockShot = (function () {
 
   function updateScreenshot(offset, data) {
     this.screenshot = this.screenshot.concat(data);
+  }
+
+  function isValidPayload(payload) {
+    if (payload.rockshot_header || payload.rockshot_data) {
+      return (payload.rockshot_header && payload.rockshot_data) ? true : false;
+    }
+    return (payload['76250'] && payload['76251']) ? true : false;
+  }
+
+  function getPayloadHeader(payload) {
+    if (payload.rockshot_header) {
+      return payload.rockshot_header.split('|');
+    }
+    return payload['76250'].split('|');
+  }
+
+  function getPayloadData(payload) {
+    return payload.rockshot_header || payload['76251'];
   }
 
 }());
