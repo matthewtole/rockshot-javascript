@@ -28,3 +28,8 @@ If you want to trigger a screenshot from your JS code, you can use the ```captur
 
     RockShot.captureSingle();
     
+RockShot handles incoming app messages by itself, but if you want to check to see if an app message will be / has been handled by RockShot, you can call this helper function:
+
+    RockShot.isValidPayload(e.payload);
+    
+This will return ```true``` if the incoming payload is for RockShot, and ```false``` otherwise.
