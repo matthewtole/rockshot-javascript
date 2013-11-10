@@ -37,3 +37,11 @@ RockShot handles incoming app messages by itself, but if you want to check to se
     RockShot.isValidPayload(e.payload);
     
 This will return ```true``` if the incoming payload is for RockShot, and ```false``` otherwise.
+
+## Web Interface
+
+The RockShot JavaScript library automatically uploads your screenshots to the web, and there's a handy website for viewing and requesting screenshots. 
+
+You can find the RockShot Web Interface at http://rockshot.pblweb.com/
+
+In the future more features will be added, primarily to bring it to the same level of functionality as the RockShot Android app.
