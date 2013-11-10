@@ -124,7 +124,7 @@ var RockShot = (function () {
   }
 
   function getPayloadData(payload) {
-    return payload.rockshot_header || payload['76251'];
+    return payload.rockshot_data || payload['76251'];
   }
 
 }());
