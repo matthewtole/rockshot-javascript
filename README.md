@@ -2,6 +2,10 @@
 
 This is the PebbleKit JS library that allows you to use RockShot in your Pebble app or watchface that uses PebbleKit JS.
 
+#### RockShot and AppSync
+
+At the moment RockShot and AppSync don't play nice together at the moment. You can still trigger screenshot requests from your Pebble watch code, but you can't trigger them from your JS code or the web interface. 
+
 ## Installation
 
 The first stage is to include the library in your existing JavaScript code. 
