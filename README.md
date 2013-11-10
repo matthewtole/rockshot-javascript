@@ -6,7 +6,7 @@ This is the PebbleKit JS library that allows you to use RockShot in your Pebble 
 
 The first stage is to include the library in your existing JavaScript code. 
 
-If you're using your own concatenation / minification process you can use the uncompressed source file ```src/rockshot.js```. 
+If you're using your own concatenation / minification process you can use the uncompressed sources file ```src/rockshot.js``` and ```src/firebase.js```.
 
 Otherwise, the best option is to copy and paste the contents of ```rockshot-with-firebase.min.js``` to the top of your ```pebble-js-app.js``` file.
 
