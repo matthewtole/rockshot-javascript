@@ -69,7 +69,7 @@ var RockShot = (function () {
 
   function requestScreenshot() {
     Pebble.sendAppMessage({
-      rockshot_header: 'single'
+      '76250': 'single'
     });
   }
 
