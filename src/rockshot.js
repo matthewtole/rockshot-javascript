@@ -1,7 +1,7 @@
 var RockShot = (function () {
 
   var VERSION_MAJOR = 0;
-  var VERSION_MINOR = 5;
+  var VERSION_MINOR = 6;
 
   return {
 
